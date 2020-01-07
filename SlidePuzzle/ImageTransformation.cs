@@ -4,12 +4,6 @@ namespace SlidePuzzle
 {
     public static class ImageTransformation
     {
-        public static Image LoadResource(string path)
-        {
-            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
-            return new Bitmap(assembly.GetManifestResourceStream("SlidePuzzle.Images." + path));
-        }
-
         public static Image Resize(this Image image, int width)
         {
             return image.Resize(width, width);
