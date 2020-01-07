@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SlidePuzzle
 {
-    public partial class Form1 : Form
+    public partial class PlayForm : Form
     {
-        public Form1()
+        public PlayForm()
         {
             InitializeComponent();
         }
