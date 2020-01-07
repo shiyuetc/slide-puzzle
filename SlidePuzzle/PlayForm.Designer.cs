@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.新規パズル生成ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.GenerateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BoardPannel = new System.Windows.Forms.Panel();
             this.AssistLabel = new System.Windows.Forms.Label();
             this.StatusTitleLabel = new System.Windows.Forms.Label();
@@ -46,7 +46,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.新規パズル生成ToolStripMenuItem});
+            this.GenerateToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -54,11 +54,11 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // 新規パズル生成ToolStripMenuItem
+            // GenerateToolStripMenuItem
             // 
-            this.新規パズル生成ToolStripMenuItem.Name = "新規パズル生成ToolStripMenuItem";
-            this.新規パズル生成ToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
-            this.新規パズル生成ToolStripMenuItem.Text = "新規パズル生成";
+            this.GenerateToolStripMenuItem.Name = "GenerateToolStripMenuItem";
+            this.GenerateToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
+            this.GenerateToolStripMenuItem.Text = "新規パズル生成";
             // 
             // BoardPannel
             // 
@@ -200,7 +200,7 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 新規パズル生成ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem GenerateToolStripMenuItem;
         private System.Windows.Forms.Panel BoardPannel;
         private System.Windows.Forms.Label AssistLabel;
         private System.Windows.Forms.Label StatusTitleLabel;
