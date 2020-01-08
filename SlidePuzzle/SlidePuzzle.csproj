@@ -106,5 +106,8 @@
     <EmbeddedResource Include="Images\level2.PNG" />
     <EmbeddedResource Include="Images\level3.PNG" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\level4.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

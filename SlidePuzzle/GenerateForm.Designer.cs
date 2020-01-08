@@ -91,7 +91,8 @@
             this.LevelComboBox.Items.AddRange(new object[] {
             "Lv1: 3x3マス(9マス)",
             "Lv2: 4x4マス(16マス)",
-            "Lv3: 5x5マス(25マス)"});
+            "Lv3: 5x5マス(25マス)",
+            "Lv4: 6x6マス(36マス)"});
             this.LevelComboBox.Location = new System.Drawing.Point(41, 164);
             this.LevelComboBox.Name = "LevelComboBox";
             this.LevelComboBox.Size = new System.Drawing.Size(140, 23);
