@@ -199,6 +199,7 @@
             this.Name = "PlayForm";
             this.Text = "SlidePuzzle";
             this.Load += new System.EventHandler(this.PlayForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PlayForm_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

@@ -37,6 +37,11 @@ namespace SlidePuzzle
         /// 移動判定フラグ用の変数
         /// </summary>
         private bool PictureMoving { get; set; }
+        
+        /// <summary>
+        /// キー判定フラグ用の変数
+        /// </summary>
+        private bool KeyTyping { get; set; }
 
         /// <summary>
         /// フォームのコンストラクタ
@@ -295,6 +300,53 @@ namespace SlidePuzzle
 
             // 移動判定フラグを偽にする
             this.PictureMoving = false;
+        }
+
+        /// <summary>
+        /// キー入力を検出時のイベント
+        /// </summary>
+        private void PlayForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            // 移動判定フラグが真なら終了
+            if (this.KeyTyping || this.State != PuzzleState.PLAYING)
+                return;
+            this.KeyTyping = true;
+
+            // 移動方角を確定する
+            int index = -1;
+            switch (e.KeyCode)
+            {
+                case Keys.W:
+                    index = this.MainPuzzle.SpaceIndex + this.MainPuzzle.SplitCount;
+                    break;
+                case Keys.Up:
+                    index = this.MainPuzzle.SpaceIndex + this.MainPuzzle.SplitCount;
+                    break;
+                case Keys.S:
+                    index = this.MainPuzzle.SpaceIndex - this.MainPuzzle.SplitCount;
+                    break;
+                case Keys.Down:
+                    index = this.MainPuzzle.SpaceIndex - this.MainPuzzle.SplitCount;
+                    break;
+                case Keys.A:
+                    index = this.MainPuzzle.SpaceIndex + 1;
+                    break;
+                case Keys.Left:
+                    index = this.MainPuzzle.SpaceIndex + 1;
+                    break;
+                case Keys.D:
+                    index = this.MainPuzzle.SpaceIndex - 1;
+                    break;
+                case Keys.Right:
+                    index = this.MainPuzzle.SpaceIndex - 1;
+                    break;
+            }
+
+            if (index >= 0 && index < this.MainPuzzle.MassCount)
+                this.MovePicture(index);
+
+            // 移動判定フラグを偽にする
+            this.KeyTyping = false;
         }
     }
 }
