@@ -44,6 +44,7 @@
             this.GameTimer = new System.Windows.Forms.Timer(this.components);
             this.ViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewNumberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -181,7 +182,8 @@
             // ViewToolStripMenuItem
             // 
             this.ViewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ViewLineToolStripMenuItem});
+            this.ViewLineToolStripMenuItem,
+            this.ViewNumberToolStripMenuItem});
             this.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem";
             this.ViewToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.ViewToolStripMenuItem.Text = "表示(&V)";
@@ -193,6 +195,14 @@
             this.ViewLineToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ViewLineToolStripMenuItem.Text = "仕切り線";
             this.ViewLineToolStripMenuItem.Click += new System.EventHandler(this.ViewLineToolStripMenuItem_Click);
+            // 
+            // ViewNumberToolStripMenuItem
+            // 
+            this.ViewNumberToolStripMenuItem.CheckOnClick = true;
+            this.ViewNumberToolStripMenuItem.Name = "ViewNumberToolStripMenuItem";
+            this.ViewNumberToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ViewNumberToolStripMenuItem.Text = "項番";
+            this.ViewNumberToolStripMenuItem.Click += new System.EventHandler(this.ViewNumberToolStripMenuItem_Click);
             // 
             // PlayForm
             // 
@@ -243,6 +253,7 @@
         private System.Windows.Forms.Timer GameTimer;
         private System.Windows.Forms.ToolStripMenuItem ViewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ViewLineToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ViewNumberToolStripMenuItem;
     }
 }
 

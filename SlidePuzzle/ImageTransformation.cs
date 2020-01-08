@@ -64,6 +64,22 @@ namespace SlidePuzzle
         }
 
         /// <summary>
+        /// 画像に項番を描画する
+        /// </summary>
+        /// <param name="image">対象の画像</param>
+        /// <param name="number">描画する数字</param>
+        /// <returns>項番を描画した画像を返す</returns>
+        public static Image DrawNumber(this Image image, int number)
+        {
+            Bitmap result = (Bitmap)image;
+            Graphics g = Graphics.FromImage(result);
+            g.FillRectangle(Brushes.White, 0, 0, 26, 24);
+            g.DrawString(number.ToString(), new Font("MS UI Gothic", 18), Brushes.Black, 0, 0);
+            g.Dispose();
+            return result;
+        }
+
+        /// <summary>
         /// 画像の切り取りをする
         /// </summary>
         /// <param name="image">対象の画像</param>

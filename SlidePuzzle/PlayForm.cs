@@ -162,6 +162,13 @@ namespace SlidePuzzle
                     BackColor = Color.White,
                     BorderStyle = this.ViewLineToolStripMenuItem.Checked ? BorderStyle.Fixed3D : BorderStyle.None
                 };
+
+                // 項番がチェックされている場合は振り分ける
+                if (this.ViewNumberToolStripMenuItem.Checked)
+                {
+                    this.BoardPictures[i].Image = this.BoardPictures[i].Image.DrawNumber(i + 1);
+                }
+
                 this.BoardPictures[i].Click += new EventHandler(BoardPictureBox_Click);
             }
             this.BoardPictures[this.MainPuzzle.MassCount - 1].Visible = false;
@@ -177,13 +184,38 @@ namespace SlidePuzzle
         /// </summary>
         private void ViewLineToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BorderStyle newBorderStyle = this.ViewLineToolStripMenuItem.Checked ? BorderStyle.Fixed3D : BorderStyle.None;
+            // パズルが未定義の場合はそのまま終了
+            if (this.BoardPictures == null) return;
 
-            if (this.BoardPictures != null)
+            BorderStyle newBorderStyle = this.ViewLineToolStripMenuItem.Checked ? BorderStyle.Fixed3D : BorderStyle.None;
+            for (int i = 0; i < this.BoardPictures.Length; i++)
             {
-                for (int i = 0; i < this.BoardPictures.Length; i++)
+                this.BoardPictures[i].BorderStyle = newBorderStyle;
+            }
+        }
+
+        /// <summary>
+        /// 項番ボタンのクリックイベント
+        /// </summary>
+        private void ViewNumberToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // パズルが未定義の場合はそのまま終了
+            if (this.BoardPictures == null) return;
+
+            if (this.ViewNumberToolStripMenuItem.Checked)
+            {
+                // 項番を振り分ける
+                for (int i = 0; i < this.MainPuzzle.MassCount; i++)
                 {
-                    this.BoardPictures[i].BorderStyle = newBorderStyle;
+                    this.BoardPictures[i].Image = this.BoardPictures[i].Image.DrawNumber(i + 1);
+                }
+            }
+            else
+            {
+                // 項番を振り分ける前の画像に戻す
+                for (int i = 0; i < this.MainPuzzle.MassCount; i++)
+                {
+                    this.BoardPictures[i].Image = this.MainPuzzle.OriginalImage.Trim(this.MainPuzzle.MassWidth, i % this.MainPuzzle.SplitCount * this.MainPuzzle.MassWidth, i / this.MainPuzzle.SplitCount * this.MainPuzzle.MassWidth);
                 }
             }
         }
