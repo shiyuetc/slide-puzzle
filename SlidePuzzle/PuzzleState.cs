@@ -7,9 +7,9 @@ namespace SlidePuzzle
     public enum PuzzleState
     {
         WAIT, // 待機中
-        PLAYING, // プレイ中
-        STOP, // 中止
-        CLEAR, // クリア
+        PLAYING, // ゲームプレイ中
+        STOP, // 一時停止中
+        CLEAR, // ゲームクリア
         SHUFFLE // シャッフル中
     }
 }
