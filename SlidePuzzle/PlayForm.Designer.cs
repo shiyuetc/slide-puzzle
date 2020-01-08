@@ -42,13 +42,16 @@
             this.CountTitleLabel = new System.Windows.Forms.Label();
             this.SlideCountLabel = new System.Windows.Forms.Label();
             this.GameTimer = new System.Windows.Forms.Timer(this.components);
+            this.ViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.GenerateToolStripMenuItem});
+            this.GenerateToolStripMenuItem,
+            this.ViewToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -59,8 +62,8 @@
             // GenerateToolStripMenuItem
             // 
             this.GenerateToolStripMenuItem.Name = "GenerateToolStripMenuItem";
-            this.GenerateToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
-            this.GenerateToolStripMenuItem.Text = "新規パズル生成";
+            this.GenerateToolStripMenuItem.Size = new System.Drawing.Size(112, 20);
+            this.GenerateToolStripMenuItem.Text = "新規パズル生成(&G)";
             this.GenerateToolStripMenuItem.Click += new System.EventHandler(this.GenerateToolStripMenuItem_Click);
             // 
             // BoardPanel
@@ -175,6 +178,22 @@
             this.GameTimer.Interval = 1000;
             this.GameTimer.Tick += new System.EventHandler(this.GameTimer_Tick);
             // 
+            // ViewToolStripMenuItem
+            // 
+            this.ViewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ViewLineToolStripMenuItem});
+            this.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem";
+            this.ViewToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.ViewToolStripMenuItem.Text = "表示(&V)";
+            // 
+            // ViewLineToolStripMenuItem
+            // 
+            this.ViewLineToolStripMenuItem.CheckOnClick = true;
+            this.ViewLineToolStripMenuItem.Name = "ViewLineToolStripMenuItem";
+            this.ViewLineToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ViewLineToolStripMenuItem.Text = "仕切り線";
+            this.ViewLineToolStripMenuItem.Click += new System.EventHandler(this.ViewLineToolStripMenuItem_Click);
+            // 
             // PlayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -222,6 +241,8 @@
         private System.Windows.Forms.Label CountTitleLabel;
         private System.Windows.Forms.Label SlideCountLabel;
         private System.Windows.Forms.Timer GameTimer;
+        private System.Windows.Forms.ToolStripMenuItem ViewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ViewLineToolStripMenuItem;
     }
 }
 

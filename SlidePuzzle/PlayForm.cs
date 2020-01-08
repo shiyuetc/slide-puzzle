@@ -31,6 +31,9 @@ namespace SlidePuzzle
         /// </summary>
         private Dictionary<PuzzleState, Color[]> StateColors { get; set; }
 
+        /// <summary>
+        /// ゲームの経過時間
+        /// </summary>
         private int ProgressTime { get; set; }
 
         /// <summary>
@@ -156,7 +159,8 @@ namespace SlidePuzzle
                     Size = new Size(this.MainPuzzle.MassWidth, this.MainPuzzle.MassWidth),
                     Location = new Point(i % this.MainPuzzle.SplitCount * this.MainPuzzle.MassWidth, i / this.MainPuzzle.SplitCount * this.MainPuzzle.MassWidth),
                     Image = this.MainPuzzle.MassImage[i],
-                    BackColor = Color.White
+                    BackColor = Color.White,
+                    BorderStyle = this.ViewLineToolStripMenuItem.Checked ? BorderStyle.Fixed3D : BorderStyle.None
                 };
                 this.BoardPictures[i].Click += new EventHandler(BoardPictureBox_Click);
             }
@@ -166,6 +170,22 @@ namespace SlidePuzzle
 
             // 盤面のシャッフルを行う
             this.Shuffle(new Random().Next(45, 55) * this.MainPuzzle.Level);
+        }
+
+        /// <summary>
+        /// 仕切り線ボタンのクリックイベント
+        /// </summary>
+        private void ViewLineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BorderStyle newBorderStyle = this.ViewLineToolStripMenuItem.Checked ? BorderStyle.Fixed3D : BorderStyle.None;
+
+            if (this.BoardPictures != null)
+            {
+                for (int i = 0; i < this.BoardPictures.Length; i++)
+                {
+                    this.BoardPictures[i].BorderStyle = newBorderStyle;
+                }
+            }
         }
 
         /// <summary>
