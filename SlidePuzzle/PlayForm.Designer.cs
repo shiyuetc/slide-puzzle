@@ -32,6 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlayForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.GenerateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ViewNumberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ChangeBackgroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BoardPanel = new System.Windows.Forms.Panel();
             this.AssistLabel = new System.Windows.Forms.Label();
             this.StateTitleLabel = new System.Windows.Forms.Label();
@@ -43,9 +47,6 @@
             this.CountTitleLabel = new System.Windows.Forms.Label();
             this.SlideCountLabel = new System.Windows.Forms.Label();
             this.GameTimer = new System.Windows.Forms.Timer(this.components);
-            this.ViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ViewLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ViewNumberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,6 +69,39 @@
             this.GenerateToolStripMenuItem.Size = new System.Drawing.Size(128, 20);
             this.GenerateToolStripMenuItem.Text = "新規パズル生成(&G)";
             this.GenerateToolStripMenuItem.Click += new System.EventHandler(this.GenerateToolStripMenuItem_Click);
+            // 
+            // ViewToolStripMenuItem
+            // 
+            this.ViewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ViewLineToolStripMenuItem,
+            this.ViewNumberToolStripMenuItem,
+            this.ChangeBackgroundColorToolStripMenuItem});
+            this.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem";
+            this.ViewToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.ViewToolStripMenuItem.Text = "表示(&V)";
+            // 
+            // ViewLineToolStripMenuItem
+            // 
+            this.ViewLineToolStripMenuItem.CheckOnClick = true;
+            this.ViewLineToolStripMenuItem.Name = "ViewLineToolStripMenuItem";
+            this.ViewLineToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ViewLineToolStripMenuItem.Text = "仕切り線";
+            this.ViewLineToolStripMenuItem.Click += new System.EventHandler(this.ViewLineToolStripMenuItem_Click);
+            // 
+            // ViewNumberToolStripMenuItem
+            // 
+            this.ViewNumberToolStripMenuItem.CheckOnClick = true;
+            this.ViewNumberToolStripMenuItem.Name = "ViewNumberToolStripMenuItem";
+            this.ViewNumberToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ViewNumberToolStripMenuItem.Text = "項番";
+            this.ViewNumberToolStripMenuItem.Click += new System.EventHandler(this.ViewNumberToolStripMenuItem_Click);
+            // 
+            // ChangeBackgroundColorToolStripMenuItem
+            // 
+            this.ChangeBackgroundColorToolStripMenuItem.Name = "ChangeBackgroundColorToolStripMenuItem";
+            this.ChangeBackgroundColorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ChangeBackgroundColorToolStripMenuItem.Text = "背景色の変更";
+            this.ChangeBackgroundColorToolStripMenuItem.Click += new System.EventHandler(this.ChangeBackgroundColorToolStripMenuItem_Click);
             // 
             // BoardPanel
             // 
@@ -181,31 +215,6 @@
             this.GameTimer.Interval = 1000;
             this.GameTimer.Tick += new System.EventHandler(this.GameTimer_Tick);
             // 
-            // ViewToolStripMenuItem
-            // 
-            this.ViewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ViewLineToolStripMenuItem,
-            this.ViewNumberToolStripMenuItem});
-            this.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem";
-            this.ViewToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
-            this.ViewToolStripMenuItem.Text = "表示(&V)";
-            // 
-            // ViewLineToolStripMenuItem
-            // 
-            this.ViewLineToolStripMenuItem.CheckOnClick = true;
-            this.ViewLineToolStripMenuItem.Name = "ViewLineToolStripMenuItem";
-            this.ViewLineToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ViewLineToolStripMenuItem.Text = "仕切り線";
-            this.ViewLineToolStripMenuItem.Click += new System.EventHandler(this.ViewLineToolStripMenuItem_Click);
-            // 
-            // ViewNumberToolStripMenuItem
-            // 
-            this.ViewNumberToolStripMenuItem.CheckOnClick = true;
-            this.ViewNumberToolStripMenuItem.Name = "ViewNumberToolStripMenuItem";
-            this.ViewNumberToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ViewNumberToolStripMenuItem.Text = "項番";
-            this.ViewNumberToolStripMenuItem.Click += new System.EventHandler(this.ViewNumberToolStripMenuItem_Click);
-            // 
             // PlayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -256,6 +265,7 @@
         private System.Windows.Forms.ToolStripMenuItem ViewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ViewLineToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ViewNumberToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ChangeBackgroundColorToolStripMenuItem;
     }
 }
 

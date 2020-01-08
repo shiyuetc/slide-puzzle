@@ -76,6 +76,17 @@ namespace SlidePuzzle
             this.StateColors.Add(PuzzleState.SHUFFLE, new Color[] {
                 ColorTranslator.FromHtml("0x800080"),
                 ColorTranslator.FromHtml("0xff80ff")});
+
+            // メニューバーのアイテム用の塗りつぶしアイコンを作成して反映
+            Bitmap colorImage = new Bitmap(16, 16);
+            Graphics g = Graphics.FromImage(colorImage);
+            g.FillRectangle(new SolidBrush(BoardPanel.BackColor), 1, 1, 14, 14);
+            g.DrawLine(Pens.LightGray, 1, 1, 1, 15);
+            g.DrawLine(Pens.LightGray, 1, 1, 15, 1);
+            g.DrawLine(Pens.LightGray, 1, 15, 15, 15);
+            g.DrawLine(Pens.LightGray, 15, 1, 15, 15);
+            g.Dispose();
+            this.ChangeBackgroundColorToolStripMenuItem.Image = colorImage;
         }
 
         /// <summary>
@@ -218,6 +229,42 @@ namespace SlidePuzzle
                     this.BoardPictures[i].Image = this.MainPuzzle.OriginalImage.Trim(this.MainPuzzle.MassWidth, i % this.MainPuzzle.SplitCount * this.MainPuzzle.MassWidth, i / this.MainPuzzle.SplitCount * this.MainPuzzle.MassWidth);
                 }
             }
+        }
+
+        /// <summary>
+        /// 背景色の変更ボタンのクリックイベント
+        /// </summary>
+        private void ChangeBackgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // シャッフル中の場合はそのままリターンする
+            if (this.State == PuzzleState.SHUFFLE) return;
+
+            // ゲームプレイ中の場合は一時停止にする
+            if (this.State == PuzzleState.PLAYING)
+            {
+                this.SetState(PuzzleState.STOP);
+            }
+
+            ColorDialog cd = new ColorDialog();
+            cd.Color = BoardPanel.BackColor;
+            cd.AllowFullOpen = true;
+            cd.SolidColorOnly = true;
+
+            if (cd.ShowDialog() == DialogResult.OK)
+            {
+                Graphics g = Graphics.FromImage(this.ChangeBackgroundColorToolStripMenuItem.Image);
+                g.FillRectangle(new SolidBrush(cd.Color), 1, 1, 14, 14);
+                g.Dispose();
+                this.BoardPanel.BackColor = cd.Color;
+            }
+
+            // 一時停止の場合はゲームプレイ中に戻す
+            if (this.State == PuzzleState.STOP)
+            {
+                this.SetState(PuzzleState.PLAYING);
+            }
+
+            cd.Dispose();
         }
 
         /// <summary>

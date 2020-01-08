@@ -182,6 +182,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(560, 500);
             this.Name = "ImageScannerForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "画像切り取り";
             this.Load += new System.EventHandler(this.ImageScannerForm_Load);
