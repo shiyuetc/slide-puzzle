@@ -4,43 +4,74 @@ using System.Windows.Forms;
 
 namespace SlidePuzzle
 {
+    /// <summary>
+    /// 画像の切り取りフォーム
+    /// </summary>
     public partial class ImageScannerForm : Form
     {
-        // 親に渡す切り取った後の画像
-        public Image TrimedImage = null;
+        /// <summary>
+        /// 親に渡す切り取った後の画像
+        /// </summary>
+        public Image TrimedImage { get; set; } = null;
+        
+        /// <summary>
+        /// 引数で渡されるパズルの画像
+        /// </summary>
+        private Image OpenImage { get; set; }
 
-        // 引数で渡されるパズルの画像
-        private Image OpenImage;
+        /// <summary>
+        /// 引数で渡される生成するパズルのレベル
+        /// </summary>
+        private int Level { get; set; }
+        
+        /// <summary>
+        /// 切り取り枠の移動フラグ
+        /// </summary>
+        private bool TrimLineMoveFlag { get; set; }
+        
+        /// <summary>
+        /// 切り取り枠の移動開始位置
+        /// </summary>
+        private Point TrimLineMousePoint { get; set; }
+        
+        /// <summary>
+        /// 切り取り枠の移動制御用
+        /// </summary>
+        private int MovedLeft { get; set; }
+        private int MovedTop { get; set; }
+        
+        /// <summary>
+        /// 切り取り枠の最大移動可能範囲
+        /// </summary>
+        private int MaxLeft { get; set; }
+        private int MaxTop { get; set; }
+        
+        /// <summary>
+        /// 1つ前のトラックバーの値
+        /// </summary>
+        private int PrevZoomDirection { get; set; } = 10;
 
-        // 引数で渡される生成するパズルのレベル
-        private int Level;
+        /// <summary>
+        /// スクロールで一度に増減する幅
+        /// </summary>
+        private int IncreaseWidth { get; set; }
+        private int IncreaseHeight { get; set; }
 
-        // 切り取り枠の移動フラグ
-        private bool TrimLineMoveFlag;
-
-        // 切り取り枠の移動開始位置
-        private Point TrimLineMousePoint;
-
-        // 切り取り枠の移動制御用
-        private int MovedLeft, MovedTop;
-
-        // 切り取り枠の最大移動可能範囲
-        private int MaxLeft, MaxTop;
-
-        // 1つ前のトラックバーの値
-        private int PrevZoomDirection = 10;
-
-        // スクロールで一度に増減する幅
-        private int IncreaseWidth, IncreaseHeight;
-
+        /// <summary>
+        /// フォームのコンストラクタ
+        /// </summary>
+        /// <param name="openImage">切り取る画像</param>
+        /// <param name="level">パズルのレベル</param>
         public ImageScannerForm(Image openImage, int level)
         {
             this.OpenImage = openImage;
             this.Level = level;
             InitializeComponent();
         }
-
-        // フォームのロードイベント
+        
+        /// <summary>
+        /// フォームのロードイベント
+        /// </summary>
         private void ImageScannerForm_Load(object sender, EventArgs e)
         {
             // 読み込んだ画像情報を表示
@@ -70,8 +101,10 @@ namespace SlidePuzzle
                 this.ZoomLevelTrackBar.Minimum = 10 - maxSmall;
             }
         }
-
-        // 拡大レベルトラックバーのスクロールイベント
+        
+        /// <summary>
+        /// 拡大レベルトラックバーのスクロールイベント
+        /// </summary>
         private void ZoomLevelTrackBar_Scroll(object sender, EventArgs e)
         {
             // 1つ前の値になってしまった時は更新しない
@@ -101,8 +134,10 @@ namespace SlidePuzzle
             this.TrimLocationToolStripStatusLabel.Text = "起点座標：(" + this.TrimLinePictureBox.Left + ", " + this.TrimLinePictureBox.Top + ")";
             this.ZoomedImageSizeToolStripStatusLabel.Text = "|  拡大後の画像サイズ：(横" + this.OpenImagePictureBox.Width + "px, 縦" + this.OpenImagePictureBox.Height + "px)";
         }
-
-        // 切り取り枠のマウスダウンイベント
+        
+        /// <summary>
+        /// 切り取り枠のマウスダウンイベント
+        /// </summary>
         private void TrimLinePictureBox_MouseDown(object sender, MouseEventArgs e)
         {
             // 切り取り枠の移動フラグをオンにする
@@ -111,15 +146,19 @@ namespace SlidePuzzle
             // 切り取り開始位置を記憶
             this.TrimLineMousePoint = new Point(e.X, e.Y);
         }
-
-        // 切り取り枠のマウスアップイベント
+        
+        /// <summary>
+        /// 切り取り枠のマウスアップイベント
+        /// </summary>
         private void TrimLinePictureBox_MouseUp(object sender, MouseEventArgs e)
         {
             // 切り取り枠の移動フラグをオフにする
             this.TrimLineMoveFlag = false;
         }
-
-        // 切り取り枠のマウスムーブイベント
+        
+        /// <summary>
+        /// 切り取り枠のマウスムーブイベント
+        /// </summary>
         private void TrimLinePictureBox_MouseMove(object sender, MouseEventArgs e)
         {
             // 切り取り枠の移動フラグを確認して真なら継続
@@ -146,16 +185,20 @@ namespace SlidePuzzle
                 this.TrimLocationToolStripStatusLabel.Text = "起点座標：(" + this.TrimLinePictureBox.Left + ", " + this.TrimLinePictureBox.Top + ")";
             }
         }
-
-        // 確定ボタンのクリックイベント
+        
+        /// <summary>
+        /// 確定ボタンのクリックイベント
+        /// </summary>
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
             // 切り取った画像を格納して閉じる
             this.TrimedImage = this.OpenImagePictureBox.Image.Trim(300, this.TrimLinePictureBox.Left, this.TrimLinePictureBox.Top);
             this.Close();
         }
-
-        // キャンセルボタンのクリックイベント
+        
+        /// <summary>
+        /// キャンセルボタンのクリックイベント
+        /// </summary>
         private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();

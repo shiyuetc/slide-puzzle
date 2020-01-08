@@ -2,6 +2,9 @@
 
 namespace SlidePuzzle
 {
+    /// <summary>
+    /// 画像を加工する拡張クラス
+    /// </summary>
     public static class ImageTransformation
     {
         /// <summary>
