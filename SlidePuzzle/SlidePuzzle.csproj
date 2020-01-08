@@ -45,12 +45,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Direction.cs" />
     <Compile Include="GenerateForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GenerateForm.Designer.cs">
       <DependentUpon>GenerateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImageScannerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageScannerForm.Designer.cs">
+      <DependentUpon>ImageScannerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImageTransformation.cs" />
+    <Compile Include="MoveLog.cs" />
     <Compile Include="PlayForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,8 +68,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Puzzle.cs" />
+    <Compile Include="PuzzleState.cs" />
     <EmbeddedResource Include="GenerateForm.resx">
       <DependentUpon>GenerateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageScannerForm.resx">
+      <DependentUpon>ImageScannerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlayForm.resx">
       <DependentUpon>PlayForm.cs</DependentUpon>
@@ -86,6 +100,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\level1.PNG" />
+    <EmbeddedResource Include="Images\level2.PNG" />
+    <EmbeddedResource Include="Images\level3.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
