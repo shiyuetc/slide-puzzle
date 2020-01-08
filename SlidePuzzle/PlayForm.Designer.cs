@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlayForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.GenerateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BoardPanel = new System.Windows.Forms.Panel();
@@ -62,8 +63,9 @@
             // 
             // GenerateToolStripMenuItem
             // 
+            this.GenerateToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("GenerateToolStripMenuItem.Image")));
             this.GenerateToolStripMenuItem.Name = "GenerateToolStripMenuItem";
-            this.GenerateToolStripMenuItem.Size = new System.Drawing.Size(112, 20);
+            this.GenerateToolStripMenuItem.Size = new System.Drawing.Size(128, 20);
             this.GenerateToolStripMenuItem.Text = "新規パズル生成(&G)";
             this.GenerateToolStripMenuItem.Click += new System.EventHandler(this.GenerateToolStripMenuItem_Click);
             // 
