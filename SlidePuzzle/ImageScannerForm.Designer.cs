@@ -50,7 +50,7 @@
             // CloseButton
             // 
             this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseButton.Location = new System.Drawing.Point(412, 399);
+            this.CloseButton.Location = new System.Drawing.Point(432, 399);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(100, 31);
             this.CloseButton.TabIndex = 4;
@@ -61,7 +61,7 @@
             // ConfirmButton
             // 
             this.ConfirmButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ConfirmButton.Location = new System.Drawing.Point(331, 399);
+            this.ConfirmButton.Location = new System.Drawing.Point(351, 399);
             this.ConfirmButton.Name = "ConfirmButton";
             this.ConfirmButton.Size = new System.Drawing.Size(75, 31);
             this.ConfirmButton.TabIndex = 3;
@@ -81,7 +81,7 @@
             this.BackgroundPanel.Location = new System.Drawing.Point(0, 0);
             this.BackgroundPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BackgroundPanel.Name = "BackgroundPanel";
-            this.BackgroundPanel.Size = new System.Drawing.Size(524, 389);
+            this.BackgroundPanel.Size = new System.Drawing.Size(544, 389);
             this.BackgroundPanel.TabIndex = 5;
             // 
             // TrimLinePictureBox
@@ -117,7 +117,7 @@
             this.ZoomedImageSizeToolStripStatusLabel});
             this.statusStrip1.Location = new System.Drawing.Point(0, 439);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(524, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(544, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -169,7 +169,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 461);
+            this.ClientSize = new System.Drawing.Size(544, 461);
             this.Controls.Add(this.ZoomLevelTitleLabel);
             this.Controls.Add(this.ZoomLevelTrackBar);
             this.Controls.Add(this.statusStrip1);
@@ -179,7 +179,7 @@
             this.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(540, 500);
+            this.MinimumSize = new System.Drawing.Size(560, 500);
             this.Name = "ImageScannerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "画像切り取り";
