@@ -53,11 +53,6 @@ namespace SlidePuzzle
         /// スライドした回数
         /// </summary>
         public int SlideCount { get; set; }
-
-        /// <summary>
-        /// ゲームを開始した時刻
-        /// </summary>
-        public DateTime StartTime { get; set; }
         
         /// <summary>
         /// 1つ前にランダムで移動した方向を格納する変数
@@ -94,14 +89,6 @@ namespace SlidePuzzle
             }
             this.Board[this.MassCount - 1] = -1;
             this.SpaceIndex = this.MassCount - 1;
-        }
-
-        /// <summary>
-        /// ゲームを開始する
-        /// </summary>
-        public void Start()
-        {
-            this.StartTime = DateTime.Now;
         }
         
         /// <summary>
@@ -167,7 +154,7 @@ namespace SlidePuzzle
                     index = this.SpaceIndex + 1;
                     break;
             }
-            return this.Move(index);
+            return this.Move(index, false);
         }
 
         /// <summary>
