@@ -392,7 +392,7 @@ namespace SlidePuzzle
                     this.SetState(PuzzleState.CLEAR);
                     this.BoardPictures[this.MainPuzzle.MassCount - 1].Visible = true;
                     MessageBox.Show("経過時間：" + this.ProgressTime +
-                        "秒\r\nスライド回数：" + this.MainPuzzle.SlideCount + "回",
+                        "秒\r\n回転回数：" + this.MainPuzzle.SlideCount + "回",
                         "ゲームクリア", MessageBoxButtons.OK);
                 }
             }
