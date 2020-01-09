@@ -187,7 +187,7 @@ namespace SlidePuzzle
             this.BoardPanel.Controls.AddRange(this.BoardPictures);
 
             // 盤面のシャッフルを行う
-            this.Shuffle(new Random().Next(45, 55) * this.MainPuzzle.Level);
+            this.Shuffle(new Random().Next(75, 100) * this.MainPuzzle.Level);
         }
 
         /// <summary>
@@ -297,7 +297,7 @@ namespace SlidePuzzle
             for (int i = 0; i < count; i++)
             {
                 this.RandomMovePicture();
-                await Task.Delay(30);
+                await Task.Delay(15);
             }
             this.SetState(PuzzleState.PLAYING);
         }
