@@ -406,11 +406,10 @@ namespace SlidePuzzle
         /// </summary>
         private void PlayForm_KeyDown(object sender, KeyEventArgs e)
         {
-            // 移動判定フラグが真なら終了
-            if (this.KeyTyping || this.State != PuzzleState.PLAYING)
-                return;
+            // キー入力フラグが真なら終了
+            if (this.KeyTyping || this.State != PuzzleState.PLAYING) return;
             this.KeyTyping = true;
-
+            
             // 移動方角を確定する
             int index = -1;
             switch (e.KeyCode)
@@ -444,7 +443,7 @@ namespace SlidePuzzle
             if (index >= 0 && index < this.MainPuzzle.MassCount)
                 this.MovePicture(index);
 
-            // 移動判定フラグを偽にする
+            // キー入力フラグを偽にする
             this.KeyTyping = false;
         }
     }

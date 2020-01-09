@@ -12,7 +12,7 @@ namespace SlidePuzzle
         /// <summary>
         /// 最終的に呼び出し元に渡すパズル情報
         /// </summary>
-        public Puzzle MyPuzzle { get; set; }
+        public Puzzle MyPuzzle { get; private set; }
 
         /// <summary>
         /// パズル生成に使用する画像

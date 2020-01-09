@@ -12,47 +12,47 @@ namespace SlidePuzzle
         /// <summary>
         /// パズルの元画像
         /// </summary>
-        public Image OriginalImage { get; set; }
+        public Image OriginalImage { get; }
         
         /// <summary>
         /// パズルのレベル
         /// </summary>
-        public int Level { get; set; }
+        public int Level { get; }
         
         /// <summary>
         /// 盤面の状態
         /// </summary>
-        public int[] Board { get; set; }
+        public int[] Board { get; private set; }
         
         /// <summary>
         /// 空マスのインデックス
         /// </summary>
-        public int SpaceIndex { set; get; }
+        public int SpaceIndex { get; private set; }
         
         /// <summary>
         /// 分割した画像の配列
         /// </summary>
-        public Image[] MassImage { get; set; }
+        public Image[] MassImage { get; }
         
         /// <summary>
         /// 分割した列の数(レベル + 2)
         /// </summary>
-        public int SplitCount { get; set; }
+        public int SplitCount { get; }
         
         /// <summary>
         /// 盤面を構成するマスの数
         /// </summary>
-        public int MassCount { get; set; }
+        public int MassCount { get; }
         
         /// <summary>
         /// 1つのマスの幅
         /// </summary>
-        public int MassWidth { get; set; }
+        public int MassWidth { get; }
 
         /// <summary>
         /// スライドした回数
         /// </summary>
-        public int SlideCount { get; set; }
+        public int SlideCount { get; private set; }
         
         /// <summary>
         /// 1つ前にランダムで移動した方向を格納する変数
