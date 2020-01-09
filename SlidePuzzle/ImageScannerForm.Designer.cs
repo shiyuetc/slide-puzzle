@@ -76,12 +76,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BackgroundPanel.AutoScroll = true;
             this.BackgroundPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BackgroundPanel.BackgroundImage")));
+            this.BackgroundPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.BackgroundPanel.Controls.Add(this.TrimLinePictureBox);
             this.BackgroundPanel.Controls.Add(this.OpenImagePictureBox);
-            this.BackgroundPanel.Location = new System.Drawing.Point(0, 0);
+            this.BackgroundPanel.Location = new System.Drawing.Point(-1, -1);
             this.BackgroundPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BackgroundPanel.Name = "BackgroundPanel";
-            this.BackgroundPanel.Size = new System.Drawing.Size(544, 389);
+            this.BackgroundPanel.Size = new System.Drawing.Size(546, 390);
             this.BackgroundPanel.TabIndex = 5;
             // 
             // TrimLinePictureBox
