@@ -47,6 +47,11 @@ namespace SlidePuzzle
         private bool KeyTyping { get; set; }
 
         /// <summary>
+        /// 1フレームでスライドするピクセル数
+        /// </summary>
+        private const int SlideAnimationStep = 10;
+
+        /// <summary>
         /// フォームのコンストラクタ
         /// </summary>
         public PlayForm()
@@ -370,20 +375,21 @@ namespace SlidePuzzle
                 else if (moveLog.MoveDirection == Direction.D)
                     leftDirection = 1;
 
+                PictureBox movingPicture = this.BoardPictures[moveLog.MoveIndex];
+                int targetTop = movingPicture.Top + this.MainPuzzle.MassWidth * topDirection;
+                int targetLeft = movingPicture.Left + this.MainPuzzle.MassWidth * leftDirection;
+
                 // 滑らかに移動
-                for (int i = 0; i < this.MainPuzzle.MassWidth / 2; i++)
+                for (int moved = 0; moved < this.MainPuzzle.MassWidth; moved += SlideAnimationStep)
                 {
-                    this.BoardPictures[moveLog.MoveIndex].Top += 2 * topDirection;
-                    this.BoardPictures[moveLog.MoveIndex].Left += 2 * leftDirection;
-                    await Task.Run(() => System.Threading.Thread.Sleep(1));
+                    int movePixel = Math.Min(SlideAnimationStep, this.MainPuzzle.MassWidth - moved);
+                    movingPicture.Top += movePixel * topDirection;
+                    movingPicture.Left += movePixel * leftDirection;
+                    await Task.Delay(1);
                 }
 
-                // 余りが出た場合の調整
-                if (this.MainPuzzle.MassWidth % 2 == 1)
-                {
-                    this.BoardPictures[moveLog.MoveIndex].Top += 1 * topDirection;
-                    this.BoardPictures[moveLog.MoveIndex].Left += 1 * leftDirection;
-                }
+                movingPicture.Top = targetTop;
+                movingPicture.Left = targetLeft;
 
                 // スライド回数をラベルに反映
                 this.SlideCountLabel.Text = this.MainPuzzle.SlideCount + "回";
