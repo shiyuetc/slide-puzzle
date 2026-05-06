@@ -245,10 +245,12 @@ namespace SlidePuzzle
                 this.SetState(PuzzleState.STOP);
             }
 
-            ColorDialog cd = new ColorDialog();
-            cd.Color = BoardPanel.BackColor;
-            cd.AllowFullOpen = true;
-            cd.SolidColorOnly = true;
+            ColorDialog cd = new ColorDialog
+            {
+                Color = BoardPanel.BackColor,
+                AllowFullOpen = true,
+                SolidColorOnly = true
+            };
 
             if (cd.ShowDialog() == DialogResult.OK)
             {
@@ -387,7 +389,7 @@ namespace SlidePuzzle
                 this.SlideCountLabel.Text = this.MainPuzzle.SlideCount + "回";
 
                 // ゲームクリア判定
-                if (this.MainPuzzle.ClearCheck())
+                if (this.MainPuzzle.IsCompleted())
                 {
                     this.SetState(PuzzleState.CLEAR);
                     this.BoardPictures[this.MainPuzzle.MassCount - 1].Visible = true;

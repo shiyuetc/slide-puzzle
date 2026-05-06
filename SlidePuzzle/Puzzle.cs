@@ -62,7 +62,7 @@ namespace SlidePuzzle
         /// <summary>
         /// 乱数生成用
         /// </summary>
-        private Random Rand = new Random();
+        private readonly Random Rand = new Random();
 
         /// <summary>
         /// パズルの初期化
@@ -161,7 +161,7 @@ namespace SlidePuzzle
         /// 盤面が完成しているか調べる
         /// </summary>
         /// <returns>盤面が完成していれば真を返す</returns>
-        public bool ClearCheck()
+        public bool IsCompleted()
         {
             if (this.Board[this.MassCount - 1] != -1) return false;
             for (int i = 0; i < this.MassCount - 1; i++)
