@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace SlidePuzzle
 {
@@ -28,10 +29,11 @@ namespace SlidePuzzle
         public static Image Resize(this Image image, int width, int height)
         {
             Bitmap result = new Bitmap(width, height);
-            Graphics g = Graphics.FromImage(result);
-            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            g.DrawImage(image, 0, 0, width, height);
-            g.Dispose();
+            using (Graphics g = Graphics.FromImage(result))
+            {
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.DrawImage(image, 0, 0, width, height);
+            }
             return result;
         }
 
@@ -44,22 +46,23 @@ namespace SlidePuzzle
         /// <returns>線を描画した画像を返す</returns>
         public static Image DrawMeshLine(this Image image, int line, bool frame = false)
         {
-            Bitmap result = (Bitmap)image;
-            Graphics g = Graphics.FromImage(result);
-            if (frame)
+            Bitmap result = new Bitmap(image);
+            using (Graphics g = Graphics.FromImage(result))
             {
-                g.DrawLine(Pens.Black, 0, 0, image.Width, 0);
-                g.DrawLine(Pens.Black, 0, 0, 0, image.Height);
-                g.DrawLine(Pens.Black, 0, image.Height - 1, image.Width - 1, image.Height - 1);
-                g.DrawLine(Pens.Black, image.Width - 1, 0, image.Width - 1, image.Height - 1);
+                if (frame)
+                {
+                    g.DrawLine(Pens.Black, 0, 0, image.Width, 0);
+                    g.DrawLine(Pens.Black, 0, 0, 0, image.Height);
+                    g.DrawLine(Pens.Black, 0, image.Height - 1, image.Width - 1, image.Height - 1);
+                    g.DrawLine(Pens.Black, image.Width - 1, 0, image.Width - 1, image.Height - 1);
+                }
+                for (int i = 0; i <= line; i++)
+                {
+                    int point = image.Width / (line + 1) * (i + 1);
+                    g.DrawLine(Pens.Black, point, 0, point, image.Height);
+                    g.DrawLine(Pens.Black, 0, point, image.Width, point);
+                }
             }
-            for (int i = 0; i <= line; i++)
-            {
-                int point = image.Width / (line + 1) * (i + 1);
-                g.DrawLine(Pens.Black, point, 0, point, image.Height);
-                g.DrawLine(Pens.Black, 0, point, image.Width, point);
-            }
-            g.Dispose();
             return result;
         }
 
@@ -71,11 +74,13 @@ namespace SlidePuzzle
         /// <returns>項番を描画した画像を返す</returns>
         public static Image DrawNumber(this Image image, int number)
         {
-            Bitmap result = (Bitmap)image;
-            Graphics g = Graphics.FromImage(result);
-            g.FillRectangle(Brushes.White, 0, 0, 26, 24);
-            g.DrawString(number.ToString(), new Font("MS UI Gothic", 18), Brushes.Black, 0, 0);
-            g.Dispose();
+            Bitmap result = new Bitmap(image);
+            using (Graphics g = Graphics.FromImage(result))
+            using (Font font = new Font("MS UI Gothic", 18))
+            {
+                g.FillRectangle(Brushes.White, 0, 0, 26, 24);
+                g.DrawString(number.ToString(), font, Brushes.Black, 0, 0);
+            }
             return result;
         }
 
@@ -87,13 +92,14 @@ namespace SlidePuzzle
         /// <param name="left">X軸の切り取り開始位置</param>
         /// <param name="top">Y軸の切り取り開始位置</param>
         /// <returns>切り取りを行った画像を返す</returns>
-        public static Image Trim(this Image image,int width, int left, int top)
+        public static Image Trim(this Image image, int width, int left, int top)
         {
             Bitmap result = new Bitmap(width, width);
-            Graphics g = Graphics.FromImage(result);
-            Rectangle srcRect = new Rectangle(left, top, width, width);
-            g.DrawImage(image, new Rectangle(0, 0, width, width), srcRect, GraphicsUnit.Pixel);
-            g.Dispose();
+            using (Graphics g = Graphics.FromImage(result))
+            {
+                Rectangle srcRect = new Rectangle(left, top, width, width);
+                g.DrawImage(image, new Rectangle(0, 0, width, width), srcRect, GraphicsUnit.Pixel);
+            }
             return result;
         }
     }
